@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  # Skip py35 since py36 is built and uses same vc14
+  # skip py35 since py36 is built and uses same vc14
   number: 1003
 
 requirements:
