@@ -14,6 +14,8 @@ source:
 build:
   # skip py35 since py36 is built and uses same vc14
   number: 1003
+  missing_dso_whitelist:
+    - "*/libzip.5.dylib"   # [osx]
 
 requirements:
   build:
@@ -33,6 +35,9 @@ requirements:
 
 test:
   commands:
+    - zipmerge -h
+    - zipcmp -h
+    - ziptool -h
     - test -f ${PREFIX}/bin/ziptool  # [linux or osx]
     - test -f ${PREFIX}/lib/libzip.so  # [linux]
     - test -f ${PREFIX}/lib/libzip.dylib  # [osx]
