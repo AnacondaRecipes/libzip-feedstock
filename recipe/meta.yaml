@@ -35,9 +35,9 @@ requirements:
 
 test:
   commands:
-    - zipmerge -h
-    - zipcmp -h
-    - ziptool -h
+    - zipmerge -h   # [unix]
+    - zipcmp -h     # [unix]
+    - ziptool -h    # [unix]
     - test -f ${PREFIX}/bin/ziptool  # [linux or osx]
     - test -f ${PREFIX}/lib/libzip.so  # [linux]
     - test -f ${PREFIX}/lib/libzip.dylib  # [osx]
