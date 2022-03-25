@@ -1,6 +1,7 @@
 {% set name = "libzip" %}
 {% set version = "1.5.1" %}
 {% set sha256 = "47eaa45faa448c72bd6906e5a096846c469a185f293cafd8456abb165841b3f2" %}
+{% set build_number = "1004" %}
 
 package:
   name: {{ name|lower }}
@@ -13,16 +14,16 @@ source:
 
 build:
   # skip py35 since py36 is built and uses same vc14
-  number: 1003
+  number: {{ build_number }}
   missing_dso_whitelist:
     - "*/libzip.5.dylib"   # [osx]
 
 requirements:
   build:
-    - cmake
-    - make                  # [not win]
-    - perl
     - {{ compiler('c') }}
+    - cmake
+    - ninja
+    - perl
   host:
     - zlib
     - bzip2

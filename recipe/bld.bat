@@ -1,14 +1,41 @@
-@echo on
-mkdir build
-if errorlevel 1 exit /B 1
-cd build
-if errorlevel 1 exit /B 1
+:: cmd
 
-cmake -G "NMake Makefiles" ^
-    -DCMAKE_BUILD_TYPE=STRING:RELEASE ^
-    -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
-    ..
-if errorlevel 1 exit /B 1
 
-cmake --build . --target INSTALL --config Release
-if errorlevel 1 exit /B 1
+:: Isolate the build.
+mkdir Build
+cd Build
+if errorlevel 1 exit /b 1
+
+
+:: Generate the build files.
+echo "Generating the build files."
+cmake .. %CMAKE_ARGS% ^
+      -G"Ninja" ^
+      -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
+      -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+      -DCMAKE_BUILD_TYPE=Release
+
+
+:: Build.
+echo "Building..."
+ninja
+if errorlevel 1 exit /b 1
+
+
+:: Perforem tests.
+echo "Testing..."
+ninja test
+::  path_to\test
+::  ctest -VV --output-on-failure
+::  if errorlevel 1 exit /b 1
+
+
+:: Install.
+echo "Installing..."
+ninja install
+if errorlevel 1 exit /b 1
+
+
+:: Error free exit.
+echo "Error free exit!"
+exit 0
