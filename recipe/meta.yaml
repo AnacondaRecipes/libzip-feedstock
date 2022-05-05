@@ -44,6 +44,10 @@ test:
     - test -f ${PREFIX}/lib/libzip.dylib  # [osx]
     - if not exist %LIBRARY_BIN%\\ziptool.exe exit 1  # [win]
     - if not exist %LIBRARY_LIB%\\zip.lib exit 1  # [win]
+    - test -f ${PREFIX}/include/zip.h  # [linux or osx]
+    - test -f ${PREFIX}/include/zipconf.h  # [linux or osx]
+    - if not exist %LIBRARY_BIN%\include\zip.h exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\include\zipconf.h exit 1  # [win]
 
 about:
   home: https://libzip.org/
