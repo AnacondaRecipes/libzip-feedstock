@@ -28,11 +28,13 @@ requirements:
     - zlib
     - bzip2
     - openssl
+    - xz
     # perl is needed to run the package test
   run:
     - zlib
     - bzip2
     - openssl
+    - xz
 
 test:
   commands:
