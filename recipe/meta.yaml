@@ -30,13 +30,10 @@ requirements:
   host:
     - zlib
     - bzip2
-    - openssl  # [not win]
-    - xz  # [win]
-    - zstd # [win]
-  run:
-    - zlib
-    - bzip2
+    - openssl
     - xz
+    - zstd
+# run dependencies should be handled by run_exports
 
 test:
   commands:
