@@ -32,7 +32,7 @@ requirements:
     - bzip2
     - openssl
     - xz  # [win]
-    - zstd
+    - zstd # [win]
   run:
     - zlib
     - bzip2
