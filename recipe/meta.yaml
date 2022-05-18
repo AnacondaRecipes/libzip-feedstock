@@ -30,6 +30,7 @@ requirements:
   host:
     - zlib
     - bzip2
+    - openssl
     - xz  # [win]
     - zstd
   run:
