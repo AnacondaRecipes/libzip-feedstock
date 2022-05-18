@@ -1,7 +1,7 @@
 :: cmd
 
 :: Delete tests.
-:: Many of these seem to be failing, likely due to zlib's implementation in C of fopen instead of _wfopen.
+:: Many of these seem to be failing due to UTF-8 issues - may want to look into later.
 del regress\clone-buffer-add.test
 del regress\clone-buffer-replace.test
 del regress\file_comment_encmismatch.test
@@ -27,7 +27,9 @@ cmake .. %CMAKE_ARGS% ^
       -G"Ninja" ^
       -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
-      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_BUILD_TYPE=Release ^
+      -DENABLE_BZIP2=ON ^
+      -DENABLE_LZMA=ON
 
 
 :: Build.
