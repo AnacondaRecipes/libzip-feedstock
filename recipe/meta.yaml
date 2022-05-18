@@ -30,8 +30,8 @@ requirements:
   host:
     - zlib
     - bzip2
-    - xz
-    - zstd
+    - xz  # [win]
+    - zstd  # [win]
   run:
     - zlib
     - bzip2
