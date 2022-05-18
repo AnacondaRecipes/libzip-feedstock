@@ -20,7 +20,7 @@ cmake .. %CMAKE_ARGS% ^
       -DENABLE_BZIP2=ON ^
       -DENABLE_LZMA=ON ^
       -DENABLE_ZSTD=ON ^
-      -DCMAKE_BUILD_TYPE=Release ^
+      -DCMAKE_BUILD_TYPE=Release
 
 
 :: Build.
