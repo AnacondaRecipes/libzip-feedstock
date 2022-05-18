@@ -23,13 +23,16 @@ requirements:
     - {{ compiler('c') }}
     - cmake
     - ninja
-    - perl
+    - perl  # [not win]
+    # regression test dependencies - m2-perl is needed in win to prevent paths # from breaking for perl when calling diff
+    - m2-perl  # [win]
+    - m2-diffutils  # [win]
   host:
     - zlib
     - bzip2
     - openssl
     - xz
-    # perl is needed to run the package test
+    - zstd # might also be needed for run
   run:
     - zlib
     - bzip2
