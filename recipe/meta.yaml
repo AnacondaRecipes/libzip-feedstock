@@ -32,12 +32,11 @@ requirements:
     - bzip2
     - openssl
     - xz
-    - zstd # might also be needed for run
+    - zstd
   run:
     - zlib
     - bzip2
     - openssl
-    - xz
 
 test:
   commands:
