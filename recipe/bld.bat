@@ -1,6 +1,5 @@
 :: cmd
 
-
 :: Isolate the build.
 mkdir Build
 cd Build
@@ -13,6 +12,14 @@ cmake .. %CMAKE_ARGS% ^
       -G"Ninja" ^
       -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+      -DENABLE_COMMONCRYPTO=OFF ^
+      -DENABLE_GNUTLS=OFF ^
+      -DENABLE_MBEDTLS=OFF ^
+      -DENABLE_OPENSSL=ON ^
+      -DENABLE_WINDOWS_CRYPTO=OFF ^
+      -DENABLE_BZIP2=ON ^
+      -DENABLE_LZMA=ON ^
+      -DENABLE_ZSTD=ON ^
       -DCMAKE_BUILD_TYPE=Release
 
 
@@ -22,7 +29,7 @@ ninja
 if errorlevel 1 exit /b 1
 
 
-:: Perforem tests.
+:: Perform tests.
 echo "Testing..."
 ninja test
 ::  path_to\test

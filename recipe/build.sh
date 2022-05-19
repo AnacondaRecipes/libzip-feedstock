@@ -18,8 +18,8 @@ cmake .. ${CMAKE_ARGS} \
       -DENABLE_OPENSSL=ON \
       -DENABLE_WINDOWS_CRYPTO=OFF \
       -DENABLE_BZIP2=ON \
-      -DENABLE_LZMA=OFF \
-      -DENABLE_ZSTD=OFF \
+      -DENABLE_LZMA=ON \
+      -DENABLE_ZSTD=ON \
       -DCMAKE_BUILD_TYPE=Release
 
 
