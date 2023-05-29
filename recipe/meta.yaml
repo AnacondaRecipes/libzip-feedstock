@@ -1,7 +1,7 @@
 {% set name = "libzip" %}
 {% set version = "1.8.0" %}
 {% set sha256 = "30ee55868c0a698d3c600492f2bea4eb62c53849bcf696d21af5eb65f3f3839e" %}
-{% set build_number = "0" %}
+{% set build_number = "1" %}
 
 package:
   name: {{ name|lower }}
@@ -28,11 +28,13 @@ requirements:
     - m2-perl  # [win]
     - m2-diffutils  # [win]
   host:
-    - zlib
-    - bzip2
-    - openssl
-    - xz
-    - zstd
+    - zlib {{ zlib }}
+    - bzip2 {{ bzip2 }}
+    - openssl {{ openssl }}
+    - xz {{ xz }}
+    - zstd {{ zstd }}
+  run:
+    - openssl 3.*
 # run dependencies should be handled by run_exports
 
 test:
