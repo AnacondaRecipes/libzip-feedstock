@@ -1,8 +1,9 @@
 {% set name = "libzip" %}
-{% set version = "1.8.0" %}
-{% set sha256 = "30ee55868c0a698d3c600492f2bea4eb62c53849bcf696d21af5eb65f3f3839e" %}
+{% set version = "1.11.4" %}
+{% set sha256 = "82e9f2f2421f9d7c2466bbc3173cd09595a88ea37db0d559a9d0a2dc60dc722e" %}
 {% set build_number = "1" %}
 
+# run dependencies should be handled by run_exports
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -14,9 +15,9 @@ source:
 
 build:
   # skip py35 since py36 is built and uses same vc14
-  number: {{ build_number }}
+  number: 0
   missing_dso_whitelist:
-    - "*/libzip.5.dylib"   # [osx]
+    - "*/libzip.5.dylib"  # [osx]
 
 requirements:
   build:
@@ -35,13 +36,12 @@ requirements:
     - zstd {{ zstd }}
   run:
     - openssl 3.*
-# run dependencies should be handled by run_exports
 
 test:
   commands:
-    - zipmerge -h   # [unix]
-    - zipcmp -h     # [unix]
-    - ziptool -h    # [unix]
+    - zipmerge -h  # [unix]
+    - zipcmp -h  # [unix]
+    - ziptool -h  # [unix]
     - test -f ${PREFIX}/bin/ziptool  # [linux or osx]
     - test -f ${PREFIX}/lib/libzip.so  # [linux]
     - test -f ${PREFIX}/lib/libzip.dylib  # [osx]
@@ -57,12 +57,12 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'A C library for reading, creating, and modifying zip archives.'
+  summary: A C library for reading, creating, and modifying zip archives.
   description: |
-      libzip is a C library for reading, creating, and modifying zip archives.
-      Files can be added from data buffers, files, or compressed data copied
-      directly from other zip archives. Changes made without closing the
-      archive can be reverted. The API is documented by man pages.
+    libzip is a C library for reading, creating, and modifying zip archives.
+    Files can be added from data buffers, files, or compressed data copied
+    directly from other zip archives. Changes made without closing the
+    archive can be reverted. The API is documented by man pages.
   doc_url: https://libzip.org/documentation/
   dev_url: https://github.com/nih-at/libzip
 
