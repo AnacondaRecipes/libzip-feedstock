@@ -1,7 +1,7 @@
 {% set name = "libzip" %}
-{% set version = "1.8.0" %}
-{% set sha256 = "30ee55868c0a698d3c600492f2bea4eb62c53849bcf696d21af5eb65f3f3839e" %}
-{% set build_number = "1" %}
+{% set version = "1.11.4" %}
+{% set sha256 = "82e9f2f2421f9d7c2466bbc3173cd09595a88ea37db0d559a9d0a2dc60dc722e" %}
+{% set build_number = "0" %}
 
 package:
   name: {{ name|lower }}
@@ -16,17 +16,18 @@ build:
   # skip py35 since py36 is built and uses same vc14
   number: {{ build_number }}
   missing_dso_whitelist:
-    - "*/libzip.5.dylib"   # [osx]
+    - "*/libzip.5.dylib"  # [osx]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - cmake
     - ninja
     - perl  # [not win]
-    # regression test dependencies - m2-perl is needed in win to prevent paths # from breaking for perl when calling diff
-    - m2-perl  # [win]
-    - m2-diffutils  # [win]
+    # regression test dependencies - msys2-perl is needed in win to prevent paths # from breaking for perl when calling diff
+    - msys2-perl  # [win]
+    - msys2-diffutils  # [win]
   host:
     - zlib {{ zlib }}
     - bzip2 {{ bzip2 }}
